@@ -18,6 +18,10 @@ const routes: Routes = [
     path: 'password-recovery',
     loadChildren: () => import('./password-recovery/password-recovery.module').then( m => m.PasswordRecoveryPageModule)
   },
+  {
+    path: 'bodega',
+    loadChildren: () => import('./bodega/bodega.module').then( m => m.BodegaPageModule)
+  },
 
   // Agrega más rutas según sea necesario
 ];
