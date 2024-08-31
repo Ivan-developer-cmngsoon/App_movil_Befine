@@ -1,21 +1,40 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Login</ion-title>
-  </ion-toolbar>
+  
 </ion-header>
 
-<ion-content class="ion-padding">
-  <form (ngSubmit)="onLogin()">
-    <ion-item>
-      <ion-label position="floating">Email</ion-label>
-      <ion-input type="email" name="email" required></ion-input>
-    </ion-item>
+<ion-content class="ion-padding login-content">
+  <div class="animated-card-container">
+    <ion-card class="animated-card">
+      <ion-card-content>
+        <ion-img src="assets/imgs/tu-imagen.jpg" alt="Descripción de la imagen"></ion-img>
+        <h2>Bienvenido a Nuestra App</h2>
+        <p>Inicia sesión para continuar</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <div class="login-container">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Bienvenido a BEFINE</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <form (ngSubmit)="onLogin()">
+          <ion-item>
+            <ion-label position="floating">Email</ion-label>
+            <ion-input type="email" [(ngModel)]="loginData.email" name="email" required></ion-input>
+          </ion-item>
 
-    <ion-item>
-      <ion-label position="floating">Password</ion-label>
-      <ion-input type="password" name="password" required></ion-input>
-    </ion-item>
+          <ion-item>
+            <ion-label position="floating">Contraseña</ion-label>
+            <ion-input type="password" [(ngModel)]="loginData.password" name="password" required></ion-input>
+          </ion-item>
 
-    <ion-button expand="full" type="submit">Login</ion-button>
-  </form>
+          <ion-button expand="full" type="submit" class="login-button">Inicio sesión</ion-button>
+        </form>
+        <div class="signup-link">
+          <p><a href="/signup">Recuperar Contraseña</a></p>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>
