@@ -1,13 +1,27 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>bodega</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-app>
+  <ion-menu contentId="main-content">
+    <ion-header>
+      <ion-toolbar color="tertiary">
+        <ion-title>Menu Content</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+      <ion-list>
+        <ion-item routerLink="/home">
+          Home
+        </ion-item>
+        <ion-item routerLink="/pedidos">
+          Pedidos
+        </ion-item>
+        <ion-item routerLink="/bodega">
+          Bodega
+        </ion-item>
+        <ion-item routerLink="/login">
+          Cerrar Sesión
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">bodega</ion-title>
-    </ion-toolbar>
-  </ion-header>
-</ion-content>
+  <ion-router-outlet id="main-content"></ion-router-outlet>
+</ion-app>
