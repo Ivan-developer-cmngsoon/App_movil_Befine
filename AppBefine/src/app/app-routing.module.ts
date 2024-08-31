@@ -14,7 +14,8 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
-  },  {
+  },
+  {
     path: 'password-recovery',
     loadChildren: () => import('./password-recovery/password-recovery.module').then( m => m.PasswordRecoveryPageModule)
   },
@@ -24,6 +25,11 @@ const routes: Routes = [
   },
 
   // Agrega más rutas según sea necesario
+  { path: 'pedidos',
+    loadChildren: () => import('./pedidos/pedidos.module').then( m => m.PedidosPageModule)
+  },
+
+  // Otras rutas si es necesario...
 ];
 
 @NgModule({
