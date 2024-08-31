@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -7,12 +8,34 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage {
-  
-  constructor(private navCtrl: NavController) {}
+  loginForm: FormGroup;
 
-  // Método para manejar el enrutamiento después de un clic en el botón de login
+  constructor(private fb: FormBuilder, private router: Router) {
+    this.loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, this.passwordValidator]]
+    });
+  }
+
+  passwordValidator(control: AbstractControl): { [key: string]: boolean } | null {
+    const password = control.value;
+    if (!password) return null;
+
+    const hasFourNumbers = /(?=(.*\d){4})/.test(password);
+    const hasThreeSpecialChars = /(?=(.*[a-z]){3})/.test(password); 
+    const hasOneUpperCase = /(?=(.*[A-Z]){1})/.test(password);
+
+    if (!hasFourNumbers || !hasThreeSpecialChars || !hasOneUpperCase) {
+      return { passwordInvalid: true };
+    }
+
+    return null;
+  }
+
   onLogin() {
-    // Redirige directamente a la página de inicio (home)
-    this.navCtrl.navigateForward('/home');
+    if (this.loginForm.valid) {
+      // Aquí puedes agregar lógica adicional si es necesario
+      this.router.navigate(['/home']); // Redirige a la página de inicio u otra página
+    }
   }
 }

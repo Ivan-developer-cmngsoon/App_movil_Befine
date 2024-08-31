@@ -1,40 +1,40 @@
 <ion-header>
-  
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding login-content">
-  <div class="animated-card-container">
-    <ion-card class="animated-card">
-      <ion-card-content>
-        <ion-img src="assets/imgs/tu-imagen.jpg" alt="Descripción de la imagen"></ion-img>
-        <h2>Bienvenido a Nuestra App</h2>
-        <p>Inicia sesión para continuar</p>
-      </ion-card-content>
-    </ion-card>
-  </div>
-  <div class="login-container">
-    <ion-card>
-      <ion-card-header>
-        <ion-card-title>dfvdfvdBienvenido a BEFINEmjdlkjfwlkjjlkjlkflkfe jaja</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <form (ngSubmit)="onLogin()">
-          <ion-item>
-            <ion-label position="floating">Email</ion-label>
-            <ion-input type="email" [(ngModel)]="loginData.email" name="email" required></ion-input>
-          </ion-item>
+<ion-content>
+  <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="email" formControlName="email"></ion-input>
+    </ion-item>
+    <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+      <ion-text color="danger">
+        <p *ngIf="loginForm.get('email')?.errors?.['required']">El email es requerido.</p>
+        <p *ngIf="loginForm.get('email')?.errors?.['email']">El email debe contener un '&#64;' y un dominio válido (por ejemplo, '.com').</p>
+      </ion-text>
+    </div>
 
-          <ion-item>
-            <ion-label position="floating">Contraseña</ion-label>
-            <ion-input type="password" [(ngModel)]="loginData.password" name="password" required></ion-input>
-          </ion-item>
+    <ion-item>
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input type="password" formControlName="password"></ion-input>
+    </ion-item>
+    <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+      <ion-text color="danger">
+        <p *ngIf="loginForm.get('password')?.errors?.['required']">La contraseña es requerida.</p>
+        <p *ngIf="loginForm.get('password')?.errors?.['passwordInvalid']">
+          La contraseña debe tener al menos 4 números, 3 caracteres y 1 letra mayúscula.
+        </p>
+      </ion-text>
+    </div>
 
-          <ion-button expand="full" type="submit" class="login-button">Inicio sesión</ion-button>
-        </form>
-        <div class="signup-link">
-          <p><a href="/signup">Recuperar Contraseña</a></p>
-        </div>
-      </ion-card-content>
-    </ion-card>
-  </div>
+    <ion-button expand="full" type="submit" [disabled]="loginForm.invalid">Ingresar</ion-button>
+  </form>
+  <ion-item lines="none">
+    <ion-text>
+      <a [routerLink]="['/password-recovery']">¿Olvidaste tu contraseña?</a>
+    </ion-text>
+  </ion-item>
 </ion-content>
