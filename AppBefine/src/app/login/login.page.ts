@@ -7,7 +7,12 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage {
-  
+  // Añadir la propiedad loginData
+  loginData = {
+    email: '',
+    password: ''
+  };
+
   constructor(private navCtrl: NavController) {}
 
   // Método para manejar el enrutamiento después de un clic en el botón de login
