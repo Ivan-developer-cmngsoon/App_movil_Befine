@@ -35,3 +35,31 @@
     </ion-item>
   </ion-list>
 </ion-content>
+<ion-app>
+  <ion-menu contentId="main-content">
+    <ion-header>
+      <ion-toolbar color="tertiary">
+        <ion-title>Menu Content</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+      <!-- Agregamos elementos del menu. -->
+      <ion-list>
+        <ion-item routerLink="/home">
+          Home
+        </ion-item>
+        <ion-item routerLink="/pedidos">
+          Pedidos
+        </ion-item>
+        <ion-item routerLink="/bodega">
+          Bodega
+        </ion-item>
+        <ion-item routerLink="/login">
+          Cerrar Sesión
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <ion-router-outlet id="main-content"></ion-router-outlet>
+</ion-app>
