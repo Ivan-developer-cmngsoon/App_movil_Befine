@@ -1,7 +1,0 @@
-{
-  "name": "AppBefine",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "angular"
-}
