@@ -28,23 +28,8 @@ const routes: Routes = [
     loadChildren: () => import('./bodega/bodega.module').then( m => m.BodegaPageModule)
   },
   {
-    path: 'transportistas',
-    loadChildren: () => import('./transportistas/transportistas.module').then( m => m.TransportistasPageModule)
-  },
-  {
-    path: 'chat',
-    loadChildren: () => import('./chat/chat.module').then( m => m.ChatPageModule)
-  },
-  {
-    path: 'alertas',
-    loadChildren: () => import('./alertas/alertas.module').then( m => m.AlertasPageModule)
-  },
-  {
     path: 'perfil-empleado',
     loadChildren: () => import('./perfil-empleado/perfil-empleado.module').then( m => m.PerfilEmpleadoPageModule)
-  },  {
-    path: 'registrousuario',
-    loadChildren: () => import('./registrousuario/registrousuario.module').then( m => m.RegistrousuarioPageModule)
   },
 
 ];
