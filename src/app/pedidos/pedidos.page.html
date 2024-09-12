@@ -51,10 +51,9 @@
         <ion-col>
           <ion-item>
             <ion-label position="floating">Total a pagar</ion-label>
-            <ion-input id="total-pagar" placeholder="Ingrese el total a pagar" (input)="validateNumbers($event)"></ion-input>
+            <ion-input id="total-pagar" placeholder="Ingrese el total a pagar"></ion-input>
           </ion-item>
-          <!-- Mensaje de advertencia -->
-          <p *ngIf="showWarningMessage" style="color: red;">Utiliza solo numeros</p>
+          <p id="warning-total" style="color: red; display: none;">Utiliza solo números</p> <!-- Advertencia oculta -->
         </ion-col>
       </ion-row>
       
@@ -81,13 +80,11 @@
         <ion-col>
           <ion-item>
             <ion-label position="floating">Medio de pago</ion-label>
-            <ion-input placeholder="Efectivo, tarjeta" (input)="validatePaymentMethod($event)"></ion-input>
+            <ion-input id="medio-pago" placeholder="Efectivo, tarjeta"></ion-input>
           </ion-item>
-          <!-- Mensaje de advertencia -->
-          <p *ngIf="showPaymentWarning" style="color: red;">Escribe "Tarjeta" o "Efectivo"</p>
+          <p id="warning-pago" style="color: red; display: none;">Escribe "Tarjeta" o "Efectivo"</p> <!-- Advertencia oculta -->
         </ion-col>
       </ion-row>
-      
       
     </ion-grid>
 
