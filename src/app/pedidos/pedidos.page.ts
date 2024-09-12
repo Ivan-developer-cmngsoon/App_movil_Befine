@@ -39,6 +39,8 @@ export class PedidosPage implements OnInit {
       });
     });
   }
+    // pequeña modificacion para nuevo merge
+
 
   // Método para cerrar el modal
   async dismissModal() {
