@@ -35,6 +35,8 @@ export class PedidosPage implements OnInit {
       this.showPaymentWarning = false;
     }
   }
+    // pequeña modificacion para nuevo merge
+
 
   async dismissModal() {
     await this.modalController.dismiss();
