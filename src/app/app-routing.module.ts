@@ -42,7 +42,11 @@ const routes: Routes = [
   {
     path: 'perfil-empleado',
     loadChildren: () => import('./perfil-empleado/perfil-empleado.module').then( m => m.PerfilEmpleadoPageModule)
+  },  {
+    path: 'registrousuario',
+    loadChildren: () => import('./registrousuario/registrousuario.module').then( m => m.RegistrousuarioPageModule)
   },
+
 ];
 
 @NgModule({
