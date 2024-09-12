@@ -13,7 +13,7 @@ export class PedidosPage implements OnInit {
 
   ngOnInit() {
     // Asegurarse de que el DOM esté listo usando la función correcta en jQuery
-    $(document).ready(() => {
+    $(function() {
       // Validación simple para "Total a pagar" (solo números)
       $('#total-pagar').on('input', function() {
         const value = $(this).val() as string;
