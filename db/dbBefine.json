@@ -1,15 +1,64 @@
 {
-    "pedidos": [
-      {
-        "id": 1,
-        "nombre_cliente": "Juan Pérez",
-        "direccion": "Calle 123, Santiago",
-        "detalle_pedido": "2 bidones de agua",
-        "total_a_pagar": 5000,
-        "horario_entrega": "10:00 AM - 11:00 AM",
-        "telefono": 987654321,
-        "medio_pago": "Transferencia"
-      }
-    ]
-  }
-  
+  "pedidos": [
+    {
+      "id": "0001",
+      "nombre_cliente": "Juan Pérez",
+      "direccion": "Calle 123, Santiago",
+      "detalle_pedido": "2 bidones de agua",
+      "total_a_pagar": 5000,
+      "horario_entrega": "10:00 AM - 11:00 AM",
+      "telefono": 987654321,
+      "medio_pago": "Transferencia"
+    },
+    {
+      "id": "002",
+      "nombre_cliente": "Ivan",
+      "direccion": "Los taram 225",
+      "detalle_pedido": "Pack inicial",
+      "total_a_pagar": 18000,
+      "horario_entrega": "15 a 18 hrs",
+      "telefono": "+569 7894 5612",
+      "medio_pago": "Efectivo"
+    },
+    {
+      "id": "003",
+      "nombre_cliente": "Ivan",
+      "direccion": "Los taram 225",
+      "detalle_pedido": "Pack inicial",
+      "total_a_pagar": 18000,
+      "horario_entrega": "15 a 18 hrs",
+      "telefono": "+569 7894 5612",
+      "medio_pago": "Efectivo"
+    },
+    {
+      "id": "004",
+      "nombre_cliente": "Ivan",
+      "direccion": "Los taram 225",
+      "detalle_pedido": "Pack inicial",
+      "total_a_pagar": 18000,
+      "horario_entrega": "15 a 18 hrs",
+      "telefono": "+569 7894 5612",
+      "medio_pago": "Efectivo"
+    },
+    {
+      "id": "005",
+      "nombre_cliente": "Ivan",
+      "direccion": "Los taram 225",
+      "detalle_pedido": "Pack inicial",
+      "total_a_pagar": 18000,
+      "horario_entrega": "15 a 18 hrs",
+      "telefono": "+569 7894 5612",
+      "medio_pago": "Efectivo"
+    },
+    {
+      "id": "210b",
+      "nombre_cliente": "Lucas",
+      "direccion": "Ohiggins 2020",
+      "detalle_pedido": "10 recargas",
+      "total_a_pagar": 20000,
+      "horario_entrega": "09 a 12 hrs",
+      "telefono": "+569 8521 4785",
+      "medio_pago": "Efectivo"
+    }
+  ]
+}

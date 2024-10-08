@@ -32,26 +32,35 @@ export class AgregarPedidoPage implements OnInit {
     });
   }
 
-  // Método para enviar el formulario de pedido
-  onFormSubmit() {
-    if (this.pedidoForm.valid) {
-      const nuevoPedido: ClPedido = new ClPedido(this.pedidoForm.value);
-      
-      // Llamada al servicio para agregar el pedido
-      this.pedidoService.addPedidos(nuevoPedido).subscribe(response => {
+ // Método para enviar el formulario de pedido
+// Método para enviar el formulario de pedido
+onFormSubmit() {
+  if (this.pedidoForm.valid) {
+    const formData = this.pedidoForm.value;
+
+    // Eliminamos el campo `id` en caso de que esté presente en el formulario
+    const { id, ...nuevoPedidoData } = formData;  // Extraemos el ID y solo usamos los demás campos
+
+    const nuevoPedido: ClPedido = new ClPedido(nuevoPedidoData);  // Creamos un nuevo pedido sin el ID
+    
+    // Llamada al servicio para agregar el pedido con un objeto observador
+    this.pedidoService.addPedidos(nuevoPedido).subscribe({
+      next: (response) => {
         console.log('Pedido enviado correctamente:', response);
         this.pedidoForm.reset();  // Reiniciar el formulario tras el envío
         this.dismissModal();  // Cerrar el modal tras el envío
-      }, error => {
+      },
+      error: (error) => {
         console.error('Error al enviar el pedido:', error);
-      });
-    } else {
-      console.log('Formulario no válido');
-    }
+      }
+    });
+  } else {
+    console.log('Formulario no válido');
   }
+}
 
-  // Método para cerrar el modal
-  async dismissModal() {
-    await this.modalController.dismiss();
-  }
+// Método para cerrar el modal
+async dismissModal() {
+  await this.modalController.dismiss();
+}
 }

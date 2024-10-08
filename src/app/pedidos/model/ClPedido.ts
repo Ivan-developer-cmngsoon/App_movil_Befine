@@ -1,5 +1,5 @@
 export class ClPedido {
-    id: number;
+    id?: number; //Id opcional
     nombre_cliente: string;
     direccion: string;
     detalle_pedido: string;
@@ -10,7 +10,6 @@ export class ClPedido {
   
     // Constructor para inicializar los valores
     constructor(obj: any) {
-      this.id = obj && obj.id || null;
       this.nombre_cliente = obj && obj.nombre_cliente || null;
       this.direccion = obj && obj.direccion || null;
       this.detalle_pedido = obj && obj.detalle_pedido || null;
