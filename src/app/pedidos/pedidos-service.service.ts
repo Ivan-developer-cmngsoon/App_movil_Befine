@@ -23,7 +23,7 @@ export class PedidoServiceService {
 
   // Método para agregar un nuevo pedido
   addPedidos(pedido: ClPedido): Observable<ClPedido> {
-    console.log("Enviando Pedido:", pedido);  // Log del pedido que se enviará
+    console.log("Enviando Pedido :", pedido);  // Log del pedido que se enviará
     return this.http.post<ClPedido>(apiUrl, pedido, httpOptions)
       .pipe(
         tap((nuevoPedido: ClPedido) => console.log(`Pedido agregado: ${nuevoPedido}`)),

@@ -45,6 +45,11 @@
             <ion-label position="floating">Total a pagar</ion-label>
             <ion-input type="number" formControlName="total_a_pagar"></ion-input>
           </ion-item>
+
+          <!-- Mostrar advertencia si el valor no es numérico -->
+          <div *ngIf="isTotalPagarInvalid()" class="error-message">
+            <p>Escribe solo números</p>
+          </div>
         </ion-col>
       </ion-row>
 
@@ -65,6 +70,12 @@
             <ion-label position="floating">Teléfono</ion-label>
             <ion-input type="tel" formControlName="telefono"></ion-input>
           </ion-item>
+          <div *ngIf="pedidoForm.get('telefono')?.invalid && pedidoForm.get('telefono')?.touched" class="error-message">
+            <p *ngIf="pedidoForm.get('telefono')?.errors?.['required']">Este campo es obligatorio (ejemplo 912345678).</p>
+            <p *ngIf="pedidoForm.get('telefono')?.errors?.['minlength']">El número debe tener al menos 9 dígitos.</p>
+            <p *ngIf="pedidoForm.get('telefono')?.errors?.['maxlength']">El número no debe tener más de 10 dígitos.</p>
+            <p *ngIf="pedidoForm.get('telefono')?.errors?.['pattern']">El número debe contener solo dígitos.</p>
+          </div>
         </ion-col>
       </ion-row>
 
@@ -75,8 +86,13 @@
             <ion-label position="floating">Medio de Pago</ion-label>
             <ion-input type="text" formControlName="medio_pago"></ion-input>
           </ion-item>
+          <div *ngIf="pedidoForm.get('medio_pago')?.invalid && pedidoForm.get('medio_pago')?.touched" class="error-message">
+            <p *ngIf="pedidoForm.get('medio_pago')?.errors?.['required']">Este campo es obligatorio (ejemplo: tarjeta)</p>
+            <p *ngIf="pedidoForm.get('medio_pago')?.errors?.['pattern']">Solo se permite "tarjeta" o "efectivo".</p>
+          </div>
         </ion-col>
       </ion-row>
+      
     </ion-grid>
 
     <!-- Botón para enviar el formulario -->

@@ -1,13 +1,35 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>mostrar-pedidos</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button> <!-- Botón para abrir el menú -->
+    </ion-buttons>
+    <ion-title>Mostrar Pedidos</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">mostrar-pedidos</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
+
+  <!-- Mostrar error si ocurre al cargar los pedidos -->
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <!-- Lista de pedidos -->
+  <ion-list *ngIf="pedidos.length > 0">
+    <ion-item *ngFor="let pedido of pedidos">
+      <ion-label>
+        <h2>{{ pedido.nombre_cliente }}</h2>
+        <p>Dirección: {{ pedido.direccion }}</p>
+        <p>Total: {{ pedido.total_a_pagar }}</p>
+        <p>Horario de entrega: {{ pedido.horario_entrega }}</p>
+        <p>Teléfono: {{ pedido.telefono }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <!-- Mostrar un mensaje si no hay pedidos -->
+  <div *ngIf="pedidos.length === 0 && !errorMessage">
+    <p>No hay pedidos para mostrar.</p>
+  </div>
+
 </ion-content>
