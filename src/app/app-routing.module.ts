@@ -31,6 +31,22 @@ const routes: Routes = [
     path: 'perfil-empleado',
     loadChildren: () => import('./perfil-empleado/perfil-empleado.module').then( m => m.PerfilEmpleadoPageModule)
   },
+  {
+    path: 'agregar-pedido',  // Ruta para la página de agregar pedido
+    loadChildren: () => import('./pedidos/agregar-pedido/agregar-pedido.module').then( m => m.AgregarPedidoPageModule)
+  },
+  {
+    path: 'modificar-pedido',  // Ruta para la página de modificar pedido
+    loadChildren: () => import('./pedidos/modificar-pedido/modificar-pedido.module').then( m => m.ModificarPedidoPageModule)
+  },
+  {
+    path: 'mostrar-pedidos',  // Ruta para la página de mostrar pedidos
+    loadChildren: () => import('./pedidos/mostrar-pedidos/mostrar-pedidos.module').then( m => m.MostrarPedidosPageModule)
+  },
+  {
+    path: 'eliminar-pedido',  // Ruta para la página de eliminar pedido
+    loadChildren: () => import('./pedidos/eliminar-pedido/eliminar-pedido.module').then( m => m.EliminarPedidoPageModule)
+  }
 
 ];
 

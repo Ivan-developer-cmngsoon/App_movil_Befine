@@ -1,1 +1,15 @@
-{}
+{
+    "pedidos": [
+      {
+        "id": 1,
+        "nombre_cliente": "Juan Pérez",
+        "direccion": "Calle 123, Santiago",
+        "detalle_pedido": "2 bidones de agua",
+        "total_a_pagar": 5000,
+        "horario_entrega": "10:00 AM - 11:00 AM",
+        "telefono": 987654321,
+        "medio_pago": "Transferencia"
+      }
+    ]
+  }
+  

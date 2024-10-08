@@ -1,0 +1,87 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Agregar Pedido</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <!-- Formulario de pedidos -->
+  <form [formGroup]="pedidoForm" (ngSubmit)="onFormSubmit()">
+    <ion-grid>
+      <!-- Campo Nombre Cliente -->
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">Nombre Cliente</ion-label>
+            <ion-input type="text" formControlName="nombre_cliente"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <!-- Campo Dirección -->
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">Dirección</ion-label>
+            <ion-input type="text" formControlName="direccion"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <!-- Campo Detalle del Pedido -->
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">Detalle del Pedido</ion-label>
+            <ion-input type="text" formControlName="detalle_pedido"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <!-- Campo Total a Pagar -->
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">Total a pagar</ion-label>
+            <ion-input type="number" formControlName="total_a_pagar"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <!-- Campo Horario de Entrega -->
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">Horario de Entrega</ion-label>
+            <ion-input type="text" formControlName="horario_entrega"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <!-- Campo Teléfono -->
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">Teléfono</ion-label>
+            <ion-input type="tel" formControlName="telefono"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <!-- Campo Medio de Pago -->
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">Medio de Pago</ion-label>
+            <ion-input type="text" formControlName="medio_pago"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <!-- Botón para enviar el formulario -->
+    <div style="text-align: center; margin-top: 20px;">
+      <ion-button type="submit" expand="block" [disabled]="!pedidoForm.valid">Enviar pedido</ion-button>
+    </div>
+  </form>
+</ion-content>
