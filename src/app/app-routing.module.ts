@@ -36,7 +36,7 @@ const routes: Routes = [
     loadChildren: () => import('./pedidos/agregar-pedido/agregar-pedido.module').then( m => m.AgregarPedidoPageModule)
   },
   {
-    path: 'modificar-pedido',  // Ruta para la página de modificar pedido
+    path: 'modificar-pedido/:id',  // Ruta para la página de modificar pedido
     loadChildren: () => import('./pedidos/modificar-pedido/modificar-pedido.module').then( m => m.ModificarPedidoPageModule)
   },
   {

@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button> <!-- Botón para abrir el menú -->
+      <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>Pedidos</ion-title>
   </ion-toolbar>
@@ -10,15 +10,8 @@
 <ion-content class="ion-padding">
   <!-- Botón para agregar un nuevo pedido -->
   <ion-button expand="block" (click)="addPedido()">Agregar Pedido</ion-button>
-
-  <!-- Botón para modificar un pedido -->
-  <ion-button expand="block" (click)="modifyPedido()">Modificar Pedido</ion-button>
-
   <!-- Botón para mostrar todos los pedidos -->
   <ion-button expand="block" (click)="showPedidos()">Mostrar Pedidos</ion-button>
-
   <!-- Botón para eliminar un pedido -->
   <ion-button expand="block" color="danger" (click)="deletePedido()">Eliminar Pedido</ion-button>
-
-  <!-- Aquí puedes agregar la lista de pedidos si es necesario -->
 </ion-content>

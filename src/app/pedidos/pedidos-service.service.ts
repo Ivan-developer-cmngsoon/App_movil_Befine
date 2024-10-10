@@ -52,7 +52,7 @@ export class PedidoServiceService {
   }
 
   // Eliminar un pedido por ID
-  deletePedido(id: number): Observable<ClPedido> {
+  deletePedido(id: String): Observable<ClPedido> {
     console.log(`Eliminando pedido con ID: ${id}`);
     return this.http.delete<ClPedido>(`${apiUrl}/${id}`, httpOptions)
       .pipe(
@@ -62,7 +62,7 @@ export class PedidoServiceService {
   }
 
   // Actualizar un pedido por ID
-  updatePedido(id: number, pedido: ClPedido): Observable<ClPedido> {
+  updatePedido(id: string, pedido: ClPedido): Observable<ClPedido> {
     console.log(`Actualizando pedido con ID: ${id}`);
     return this.http.put<ClPedido>(`${apiUrl}/${id}`, pedido, httpOptions)
       .pipe(

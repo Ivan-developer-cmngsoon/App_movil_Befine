@@ -16,12 +16,7 @@ export class PedidosPage implements OnInit {
   addPedido() {
     this.navCtrl.navigateForward('/agregar-pedido');
   }
-
-  // Método para navegar a la página de modificar pedido
-  modifyPedido() {
-    this.navCtrl.navigateForward('/modificar-pedido');
-  }
-
+  
   // Método para navegar a la página de mostrar todos los pedidos
   showPedidos() {
     this.navCtrl.navigateForward('/mostrar-pedidos');
