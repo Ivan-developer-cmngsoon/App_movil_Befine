@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { HttpClientModule } from '@angular/common/http';  // Importa HttpClientModule
+import { IonicStorageModule } from '@ionic/storage-angular';  // Importa IonicStorageModule
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,7 +16,8 @@ import { HttpClientModule } from '@angular/common/http';  // Importa HttpClientM
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    HttpClientModule  // Añade HttpClientModule aquí
+    HttpClientModule,  // Añade HttpClientModule aquí
+    IonicStorageModule.forRoot()  // Inicializa el Storage aquí
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

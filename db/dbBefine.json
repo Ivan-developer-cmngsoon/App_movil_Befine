@@ -17,8 +17,60 @@
       "detalle_pedido": "10 recargas",
       "total_a_pagar": 20000,
       "horario_entrega": "09 a 12 hrs",
-      "telefono": "+569 8521 4785",
+      "telefono": "+56985214785",
       "medio_pago": "Efectivo"
+    },
+    {
+      "id": "0003",
+      "nombre_cliente": "Dani",
+      "direccion": "Los presidentes 1",
+      "detalle_pedido": "5 recargas",
+      "total_a_pagar": 10000,
+      "horario_entrega": "13 hrs",
+      "telefono": "958584747",
+      "medio_pago": "efectivo"
+    },
+    {
+      "id": null,
+      "nombre_cliente": "Adrian",
+      "direccion": "Calle nueva 123",
+      "detalle_pedido": "Pack inicial",
+      "total_a_pagar": 20000,
+      "horario_entrega": "13 hrs.",
+      "telefono": "912345678",
+      "medio_pago": "efectivo"
+    }
+  ],
+  "usuarios": [
+    {
+      "id": 1,
+      "email": "admin@befine.com",
+      "username": "Admin",
+      "password": "Befine2024"
+    },
+    {
+      "id": 2,
+      "email": "encargado@befine.com",
+      "username": "Encargado",
+      "password": "Befine2024"
+    },
+    {
+      "id": 3,
+      "email": "transporte@befine.com",
+      "username": "Transporte",
+      "password": "Befine2024"
+    },
+    {
+      "id": 4,
+      "email": "bodega@befine.com",
+      "username": "Bodega",
+      "password": "Befine2024"
+    },
+    {
+      "id": 5,
+      "email": "dueño@befine.com",
+      "username": "Dueño",
+      "password": "Befine2024"
     }
   ]
 }

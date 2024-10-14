@@ -11,7 +11,8 @@
       <ion-item routerLink="/pedidos" routerDirection="root">Pedidos</ion-item>
       <ion-item routerLink="/bodega" routerDirection="root">Bodega</ion-item>
       <ion-item routerLink="/perfil-empleado" routerDirection="root">Perfil de Empleado</ion-item>
-      <ion-item routerLink="/login" routerDirection="root">Login</ion-item>
+      <!-- Mostrar el botón de logout solo si el usuario está autenticado -->
+      <ion-item *ngIf="isAuthenticated" (click)="logout()">Logout</ion-item>
     </ion-list>
   </ion-content>
 </ion-menu>

@@ -1,6 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { AnimationController } from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Storage } from '@ionic/storage-angular';  // Importar Storage para manejar la sesión
 
 @Component({
   selector: 'app-home',
@@ -15,22 +16,27 @@ export class HomePage {
   constructor(
     private animationCtrl: AnimationController, 
     private router: Router, 
-    private activeroute: ActivatedRoute  // Inyectar ActivatedRoute
+    private activeroute: ActivatedRoute,
+    private storage: Storage  // Inyectar Storage para manejar el username
   ) {}
 
-  ngOnInit() {
-    // Suscribirse a los cambios de la ruta activa
-    this.activeroute.queryParams.subscribe(() => {
-      // Verificar si hay navegación en curso y si tiene datos en el estado
-      const currentNavigation = this.router.getCurrentNavigation();
-      if (currentNavigation && currentNavigation.extras.state) {
-        this.username = currentNavigation.extras.state['username'] || 'Usuario';
-        console.log(this.username);  // Mostrar el username recibido en la consola
-      } else {
-        // Manejar el caso donde no se pasa ningún estado o la navegación es indefinida
-        this.username = 'Usuario';  // Valor por defecto
-      }
-    });
+  async ngOnInit() {
+    // Recuperar el nombre de usuario desde el Storage si no se pasa en la navegación
+    const savedUsername = await this.storage.get('username');
+    if (savedUsername) {
+      this.username = savedUsername;
+    } else {
+      // Usar el valor de la navegación si existe
+      this.activeroute.queryParams.subscribe(() => {
+        const currentNavigation = this.router.getCurrentNavigation();
+        if (currentNavigation && currentNavigation.extras.state) {
+          this.username = currentNavigation.extras.state['username'] || 'Usuario';
+        } else {
+          this.username = 'Usuario';  // Valor por defecto si no hay datos en la navegación
+        }
+      });
+    }
+    console.log(this.username);  // Mostrar el username recibido o recuperado del Storage
   }
 
   ngAfterViewInit() {
