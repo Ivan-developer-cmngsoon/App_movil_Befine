@@ -12,6 +12,7 @@ import { ModalController } from '@ionic/angular';
 export class AgregarPedidoPage implements OnInit {
 
   pedidoForm!: FormGroup;  // Formulario reactivo
+  isModalOpen = false;  // Controlar la visibilidad del modal
 
   constructor(
     private formBuilder: FormBuilder,
@@ -36,14 +37,14 @@ export class AgregarPedidoPage implements OnInit {
   onFormSubmit() {
     if (this.pedidoForm.valid) {
       const formData = this.pedidoForm.value;
-      const { id, ...nuevoPedidoData } = formData;  // Eliminamos el ID si está presente
-      const nuevoPedido: ClPedido = new ClPedido(nuevoPedidoData);  // Creamos un nuevo pedido sin el ID
+      const nuevoPedidoData = formData;
+      const nuevoPedido: ClPedido = new ClPedido(nuevoPedidoData);  // Creamos un nuevo pedido
     
       this.pedidoService.addPedidos(nuevoPedido).subscribe({
         next: (response) => {
           console.log('Pedido enviado correctamente:', response);
           this.pedidoForm.reset();  // Reiniciar el formulario tras el envío
-          this.dismissModal();  // Cerrar el modal tras el envío
+          this.openModal();  // Abrir el modal tras el envío
         },
         error: (error) => {
           console.error('Error al enviar el pedido:', error);
@@ -54,14 +55,24 @@ export class AgregarPedidoPage implements OnInit {
     }
   }
 
+  // Método para abrir el modal
+  openModal() {
+    this.isModalOpen = true;
+  }
+
   // Método para cerrar el modal
-  async dismissModal() {
-    await this.modalController.dismiss();
+  closeModal() {
+    this.isModalOpen = false;
+  }
+
+  // Método para manejar el cierre del modal
+  onModalDismiss() {
+    this.isModalOpen = false;  // Asegurarse de que el modal esté cerrado
   }
 
   // Método para verificar si el campo 'total_a_pagar' tiene un error
-isTotalPagarInvalid(): boolean {
-  const control = this.pedidoForm.get('total_a_pagar');
-  return control ? control.invalid && control.touched : false;  // Verifica si el control existe
-}
+  isTotalPagarInvalid(): boolean {
+    const control = this.pedidoForm.get('total_a_pagar');
+    return control ? control.invalid && control.touched : false;  // Verifica si el control existe
+  }
 }

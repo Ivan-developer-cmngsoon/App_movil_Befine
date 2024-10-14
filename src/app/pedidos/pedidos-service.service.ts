@@ -13,6 +13,12 @@ const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/js
 export class PedidoServiceService {
   constructor(private http: HttpClient) { }
 
+  // Método para generar un ID único
+  private generateUniqueId(): string {
+    // Generamos un ID único usando la fecha y un número aleatorio
+    return Date.now().toString() + Math.random().toString(36).substring(2, 9);
+  }
+
   // Manejo de errores para todas las solicitudes HTTP
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
@@ -23,7 +29,12 @@ export class PedidoServiceService {
 
   // Método para agregar un nuevo pedido
   addPedidos(pedido: ClPedido): Observable<ClPedido> {
-    console.log("Enviando Pedido :", pedido);  // Log del pedido que se enviará
+    // Generar un ID único si no tiene uno
+    if (!pedido.id) {
+      pedido.id = this.generateUniqueId();
+    }
+
+    console.log("Enviando Pedido con ID generado:", pedido);  // Log del pedido con ID
     return this.http.post<ClPedido>(apiUrl, pedido, httpOptions)
       .pipe(
         tap((nuevoPedido: ClPedido) => console.log(`Pedido agregado: ${nuevoPedido}`)),
@@ -52,7 +63,7 @@ export class PedidoServiceService {
   }
 
   // Eliminar un pedido por ID
-  deletePedido(id: String): Observable<ClPedido> {
+  deletePedido(id: string): Observable<ClPedido> {
     console.log(`Eliminando pedido con ID: ${id}`);
     return this.http.delete<ClPedido>(`${apiUrl}/${id}`, httpOptions)
       .pipe(

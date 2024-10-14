@@ -1,25 +1,20 @@
 <ion-header>
   <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-menu-button></ion-menu-button> <!-- Botón para abrir el menú -->
-      </ion-buttons>
-      <ion-title>Home</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button> <!-- Botón para abrir el menú -->
+    </ion-buttons>
+    <ion-title>Home</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
-    <ion-toolbar>
-    </ion-toolbar>
+    <ion-toolbar></ion-toolbar>
   </ion-header>
 
   <!-- Contenedor para el mensaje de bienvenida con la referencia para la animación -->
   <div id="welcome-message" #welcomeMessage>
-    <h2>Bienvenido a Befine</h2>
-    <p>¡Gracias por usar nuestra app de agua purificada!</p>
+    <h2>¡Bienvenido, {{ username }}!</h2>
+    <p>Nos alegra que estés aquí. Accede a las funcionalidades de Befine fácilmente.</p>
   </div>
-  <!-- Mensaje de bienvenida con el nombre de usuario -->
-<ion-label>
-  Bienvenido, {{ username }} <!-- Muestra el nombre de usuario -->
-</ion-label>
 </ion-content>

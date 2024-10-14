@@ -26,7 +26,6 @@ export class HomePage {
     if (savedUsername) {
       this.username = savedUsername;
     } else {
-      // Usar el valor de la navegación si existe
       this.activeroute.queryParams.subscribe(() => {
         const currentNavigation = this.router.getCurrentNavigation();
         if (currentNavigation && currentNavigation.extras.state) {
@@ -41,12 +40,13 @@ export class HomePage {
 
   ngAfterViewInit() {
     // Definir la animación para el mensaje de bienvenida
-    const animation = this.animationCtrl
+    const welcomeAnimation = this.animationCtrl
       .create()
       .addElement(this.welcomeMessage.nativeElement)
       .duration(1500) // Duración de la animación en milisegundos
+      .fromTo('transform', 'translateY(-100%)', 'translateY(0)')
       .fromTo('opacity', '0', '1'); // Efecto de desvanecimiento (fade in)
 
-    animation.play(); // Ejecutar la animación
+    welcomeAnimation.play(); // Ejecutar la animación
   }
 }

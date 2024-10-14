@@ -16,6 +16,10 @@ export class LoginPage implements OnInit {
   errorMessage: string = '';  // Mensaje de error en caso de problemas con el login
   errorCorreo: string = '';  // Mensaje de error si el correo para la recuperación es inválido
 
+  // Variables para manejar la visibilidad de la contraseña
+  passwordType: string = 'password';  // Tipo del input de contraseña (password o text)
+  passwordIcon: string = 'eye-off';   // Ícono para mostrar u ocultar la contraseña
+
   constructor(
     private router: Router,
     private http: HttpClient,  // Inyectar HttpClient
@@ -26,7 +30,7 @@ export class LoginPage implements OnInit {
     // Inicializar el Storage para poder guardar los datos
     await this.storage.create();
   }
-  
+
   // Función que se ejecuta cuando el usuario hace clic en el botón de login
   login() {
     if (this.email && this.username && this.password) {
@@ -40,8 +44,8 @@ export class LoginPage implements OnInit {
               await this.storage.set('username', this.username);
               this.router.navigate(['/home']);
               // Limpiar mensajes de error
-              this.errorMessage = 'Credenciales incorrectas';
-    
+              this.errorMessage = '';
+
               // Navegar a la página de inicio
               let navigationExtras: NavigationExtras = {
                 state: { username: this.username }
@@ -62,7 +66,6 @@ export class LoginPage implements OnInit {
       this.errorMessage = 'Por favor, ingrese todos los campos.';
     }
   }
-  
 
   // Función para manejar el envío del formulario de recuperación de contraseña
   onSubmit() {
@@ -76,7 +79,17 @@ export class LoginPage implements OnInit {
 
   // Función para cerrar el modal de recuperación de contraseña
   async dismissModal() {
-    // Aquí deberías implementar el cierre del modal si ya tienes lógica para los modales
     console.log('Modal cerrado');
+  }
+
+  // Función para alternar la visibilidad de la contraseña
+  togglePasswordVisibility() {
+    if (this.passwordType === 'password') {
+      this.passwordType = 'text';  // Cambiar a tipo texto para mostrar la contraseña
+      this.passwordIcon = 'eye';   // Cambiar el ícono a "mostrar"
+    } else {
+      this.passwordType = 'password';  // Cambiar a tipo password para ocultar la contraseña
+      this.passwordIcon = 'eye-off';   // Cambiar el ícono a "ocultar"
+    }
   }
 }

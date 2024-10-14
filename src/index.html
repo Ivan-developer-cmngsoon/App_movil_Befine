@@ -7,16 +7,27 @@
 
   <base href="/" />
 
+  <!-- Configuración básica para ambos sistemas -->
   <meta name="color-scheme" content="light dark" />
   <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <meta name="format-detection" content="telephone=no" />
   <meta name="msapplication-tap-highlight" content="no" />
 
+  <!-- Favicon para navegadores -->
   <link rel="icon" type="image/png" href="assets/icon/favicon.png" />
 
-  <!-- add to homescreen for ios -->
-  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <!-- Hacer que la app sea instalable como una PWA en Android y iOS -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes"> <!-- Para iOS -->
+
+  <!-- Configuración para iOS -->
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="apple-mobile-web-app-title" content="Ionic App" />
+  <link rel="apple-touch-icon" href="assets/icon/apple-touch-icon.png" />
+
+  <!-- Theme color para Android y iOS -->
+  <meta name="theme-color" content="#000000" />  <!-- Ajusta el color según tu branding -->
+
 </head>
 
 <body>

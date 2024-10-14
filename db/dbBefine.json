@@ -31,7 +31,7 @@
       "medio_pago": "efectivo"
     },
     {
-      "id": null,
+      "id": "3728942347547ymna5rp",
       "nombre_cliente": "Adrian",
       "direccion": "Calle nueva 123",
       "detalle_pedido": "Pack inicial",
@@ -39,35 +39,65 @@
       "horario_entrega": "13 hrs.",
       "telefono": "912345678",
       "medio_pago": "efectivo"
+    },
+    {
+      "id": "2728942347547ymna5rp",
+      "nombre_cliente": "Astrid",
+      "direccion": "Los kekes",
+      "detalle_pedido": "2 recargas mas envases",
+      "total_a_pagar": 10000,
+      "horario_entrega": "17 hrs",
+      "telefono": "987456321",
+      "medio_pago": "tarjeta"
+    },
+    {
+      "id": "1728942347547ymna5rp",
+      "nombre_cliente": "Ivan Rodriguez",
+      "direccion": "Duoc plaza norte",
+      "detalle_pedido": "pack inicial",
+      "total_a_pagar": 25000,
+      "horario_entrega": "18 hrs",
+      "telefono": "987459658",
+      "medio_pago": "efectivo"
+    },
+    {
+      "id": "1728942819164wbrjyo8",
+      "nombre_cliente": "Bryan",
+      "direccion": "Los valledores",
+      "detalle_pedido": "2 dispensadores ambientales",
+      "total_a_pagar": 18000,
+      "horario_entrega": "17 hrs",
+      "telefono": "956984125",
+      "medio_pago": "tarjeta"
     }
   ],
   "usuarios": [
     {
-      "id": 1,
+      "id": "1",
       "email": "admin@befine.com",
       "username": "Admin",
       "password": "Befine2024"
     },
     {
-      "id": 2,
+      "id": "2",
       "email": "encargado@befine.com",
       "username": "Encargado",
       "password": "Befine2024"
     },
     {
-      "id": 3,
+      "id": "3",
       "email": "transporte@befine.com",
       "username": "Transporte",
       "password": "Befine2024"
     },
     {
-      "id": 4,
+      "id": "4",
       "email": "bodega@befine.com",
       "username": "Bodega",
       "password": "Befine2024"
     },
     {
-      "id": 5,
+      "id": "5",
       "email": "dueño@befine.com",
       "username": "Dueño",
       "password": "Befine2024"
