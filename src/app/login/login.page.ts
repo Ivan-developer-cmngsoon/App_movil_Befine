@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 import { HttpClient } from '@angular/common/http';  // Importar HttpClient para manejar las peticiones HTTP
 import { Storage } from '@ionic/storage-angular';  // Importar Storage para manejar la sesión
+import { ModalController } from '@ionic/angular';  // Importar ModalController para manejar el modal
 
 @Component({
   selector: 'app-login',
@@ -23,7 +24,8 @@ export class LoginPage implements OnInit {
   constructor(
     private router: Router,
     private http: HttpClient,  // Inyectar HttpClient
-    private storage: Storage  // Inyectar Storage para manejar la sesión
+    private storage: Storage,  // Inyectar Storage para manejar la sesión
+    private modalController: ModalController  // Inyectar ModalController
   ) {}
 
   async ngOnInit() {
@@ -70,15 +72,34 @@ export class LoginPage implements OnInit {
   // Función para manejar el envío del formulario de recuperación de contraseña
   onSubmit() {
     if (this.email) {
-      alert('Instrucciones enviadas para recuperar tu contraseña.');
-      this.dismissModal();  // Cerrar el modal
+      // Realizar una solicitud HTTP para verificar si el email existe en json-server
+      this.http.get<any[]>(`http://localhost:3000/usuarios?email=${this.email}`)
+        .subscribe({
+          next: (response) => {
+            if (response.length > 0) {
+              // Si el correo está registrado, mostrar un mensaje y redirigir al login
+              alert('Instrucciones enviadas para recuperar tu contraseña.');
+              this.dismissModal();  // Cerrar el modal
+              this.router.navigate(['/login']);  // Redirigir al login
+            } else {
+              // Si el correo no está registrado, mostrar un mensaje de error
+              this.errorCorreo = 'Este correo no está registrado.';
+            }
+          },
+          error: () => {
+            // Si hay un error en la solicitud HTTP, mostrar un mensaje de error genérico
+            this.errorCorreo = 'Error al conectar con el servidor. Inténtalo de nuevo.';
+          }
+        });
     } else {
+      // Si el campo de correo está vacío, mostrar un mensaje de error
       this.errorCorreo = 'Por favor ingresa un correo válido.';
     }
   }
 
   // Función para cerrar el modal de recuperación de contraseña
   async dismissModal() {
+    await this.modalController.dismiss();  // Cerrar el modal correctamente
     console.log('Modal cerrado');
   }
 
