@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Usuarios</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Información del Usuario</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-list *ngIf="usuario">
+        <!-- Campo Nombre -->
+        <ion-item>
+          <ion-label position="floating">Nombre</ion-label>
+          <ion-input [(ngModel)]="usuario.nombre"></ion-input>
+        </ion-item>
+
+        <!-- Campo Email -->
+        <ion-item>
+          <ion-label position="floating">Email</ion-label>
+          <ion-input [(ngModel)]="usuario.email" type="email"></ion-input>
+        </ion-item>
+
+        <!-- Campo Password -->
+        <ion-item>
+          <ion-label position="floating">Password</ion-label>
+          <ion-input [(ngModel)]="usuario.password" type="password"></ion-input>
+        </ion-item>
+
+        <!-- Botón para guardar los cambios -->
+        <div class="ion-margin-top">
+          <ion-button expand="block" color="success" (click)="guardarCambios()">Guardar Cambios</ion-button>
+        </div>
+      </ion-list>
+
+      <div *ngIf="!usuario" class="ion-text-center">
+        <p>No se encontró el usuario.</p>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

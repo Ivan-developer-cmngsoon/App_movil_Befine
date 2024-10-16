@@ -51,7 +51,34 @@ const routes: Routes = [
     path: 'eliminar-pedido',
     loadChildren: () => import('./pedidos/eliminar-pedido/eliminar-pedido.module').then(m => m.EliminarPedidoPageModule),
     canActivate: [AuthGuard]  // Proteger la ruta con AuthGuard
+  },
+  {
+    path: 'usuario',
+    loadChildren: () => import('./usuario/usuario.module').then( m => m.UsuarioPageModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'listar-usuarios',
+    loadChildren: () => import('./usuario/listar-usuarios/listar-usuarios.module').then(m => m.ListarUsuariosPageModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'agregar-usuario',
+    loadChildren: () => import('./usuario/agregar-usuario/agregar-usuario.module').then(m => m.AgregarUsuarioPageModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'modificar-usuario/:id',
+    loadChildren: () => import('./usuario/modificar-usuario/modificar-usuario.module').then(m => m.ModificarUsuarioPageModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'eliminar-usuario',
+    loadChildren: () => import('./usuario/eliminar-usuario/eliminar-usuario.module').then(m => m.EliminarUsuarioPageModule),
+    canActivate: [AuthGuard]
   }
+  
+
 ];
 
 @NgModule({

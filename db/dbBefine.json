@@ -71,7 +71,7 @@
       "medio_pago": "tarjeta"
     }
   ],
-  "usuarios": [
+  "usuario": [
     {
       "id": "1",
       "email": "admin@befine.com",

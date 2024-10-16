@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Agregar Usuario</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <!-- Formulario de usuarios -->
+  <form [formGroup]="usuarioForm" (ngSubmit)="onFormSubmit()">
+    <ion-grid>
+
+      <!-- Campo Nombre -->
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">Nombre</ion-label>
+            <ion-input type="text" formControlName="nombre"></ion-input>
+          </ion-item>
+          <div *ngIf="usuarioForm.get('nombre')?.invalid && usuarioForm.get('nombre')?.touched" class="error-message">
+            <p *ngIf="usuarioForm.get('nombre')?.errors?.['required']">Este campo es obligatorio.</p>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <!-- Campo Email -->
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">Email</ion-label>
+            <ion-input type="email" formControlName="email"></ion-input>
+          </ion-item>
+          <div *ngIf="usuarioForm.get('email')?.invalid && usuarioForm.get('email')?.touched" class="error-message">
+            <p *ngIf="usuarioForm.get('email')?.errors?.['required']">Este campo es obligatorio.</p>
+            <p *ngIf="usuarioForm.get('email')?.errors?.['email']">Introduce un correo electrónico válido.</p>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <!-- Campo Password -->
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">Password</ion-label>
+            <ion-input type="password" formControlName="password"></ion-input>
+          </ion-item>
+          <div *ngIf="usuarioForm.get('password')?.invalid && usuarioForm.get('password')?.touched" class="error-message">
+            <p *ngIf="usuarioForm.get('password')?.errors?.['required']">Este campo es obligatorio.</p>
+            <p *ngIf="usuarioForm.get('password')?.errors?.['minlength']">La contraseña debe tener al menos 6 caracteres.</p>
+          </div>
+        </ion-col>
+      </ion-row>
+      
+    </ion-grid>
+
+    <!-- Botón para enviar el formulario -->
+    <div style="text-align: center; margin-top: 20px;">
+      <ion-button type="submit" expand="block" [disabled]="!usuarioForm.valid">Agregar Usuario</ion-button>
+    </div>
+  </form>
+
+  <!-- Modal para mostrar mensaje de éxito -->
+  <ion-modal [isOpen]="isModalOpen" (didDismiss)="onModalDismiss()">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Usuario Agregado</ion-title>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-content class="ion-padding">
+        <h2>¡El usuario ha sido agregado correctamente!</h2>
+        <ion-button expand="block" (click)="closeModal()">Cerrar</ion-button>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+</ion-content>
