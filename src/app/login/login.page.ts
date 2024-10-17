@@ -38,7 +38,7 @@ export class LoginPage implements OnInit {
     if (this.email && this.username && this.password) {
       // Realizar la solicitud HTTP a json-server para validar el correo, nombre de usuario y la contraseña
       this.http.get<any[]>(`http://localhost:3000/usuario?email=${this.email}&username=${this.username}&password=${this.password}`)
-        .subscribe({
+      .subscribe({
           next: async (response) => {
             if (response.length > 0) {
               // Si las credenciales son correctas, guardar la sesión en el Storage

@@ -6,6 +6,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "json-server": "json-server --watch dbBefine.json",
+
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
