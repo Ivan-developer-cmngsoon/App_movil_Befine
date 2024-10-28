@@ -76,7 +76,11 @@ const routes: Routes = [
     path: 'eliminar-usuario',
     loadChildren: () => import('./usuario/eliminar-usuario/eliminar-usuario.module').then(m => m.EliminarUsuarioPageModule),
     canActivate: [AuthGuard]
+  },  {
+    path: 'transporte',
+    loadChildren: () => import('./transporte/transporte.module').then( m => m.TransportePageModule)
   }
+
   
 
 ];

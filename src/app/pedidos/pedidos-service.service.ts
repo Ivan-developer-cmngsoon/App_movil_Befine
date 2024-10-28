@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { ClPedido } from './model/ClPedido';
-import { Observable, of, from } from 'rxjs';
+import { Observable, of, from, forkJoin } from 'rxjs';
 import { catchError, tap, switchMap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { SqliteService } from './../services/sqlite.service';
+import { LocalNotifications } from '@capacitor/local-notifications';
 
 
-const apiUrl = "http://localhost:3000/pedidos";  // API JSON Server en puerto 3000
+const apiUrl = "http://192.168.1.88:3000/pedidos";  // API JSON Server en puerto 3000
 const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
 
 @Injectable({
@@ -43,6 +44,7 @@ export class PedidoServiceService {
         return this.syncPendingPedidos();
       }),
       tap(() => console.log('Pedido agregado y sincronizado correctamente')),
+      tap(() => this.notificarNuevoPedido(pedido)), 
       catchError(this.handleError<ClPedido>('addPedidos'))
     );
   }
@@ -90,23 +92,45 @@ export class PedidoServiceService {
   // Método para sincronizar los pedidos que no han sido sincronizados en SQLite
   syncPendingPedidos(): Observable<any> {
     console.log("Sincronizando pedidos pendientes con JSON-server...");
-
-    // Obtenemos los pedidos no sincronizados desde SQLite
+  
     return from(this.sqliteService.getNonSyncedPedidos()).pipe(
       switchMap(pedidosNoSincronizados => {
-        const syncObservables = pedidosNoSincronizados.map(pedido => {
-          return this.http.post<ClPedido>(apiUrl, pedido, httpOptions).pipe(
+        if (pedidosNoSincronizados.length === 0) {
+          console.log("No hay pedidos pendientes de sincronización.");
+          return of(null);  // Retornar si no hay pedidos para sincronizar
+        }
+  
+        const syncObservables = pedidosNoSincronizados.map(pedido =>
+          this.http.post<ClPedido>(apiUrl, pedido, httpOptions).pipe(
             tap(() => {
-              // Marcamos el pedido como sincronizado en SQLite
-              this.sqliteService.markAsSynced(pedido.id);
+              this.sqliteService.markAsSynced(pedido.id);  // Marca como sincronizado en SQLite
               console.log(`Pedido con ID ${pedido.id} sincronizado correctamente`);
             }),
-            catchError(this.handleError<any>('syncPendingPedidos'))
-          );
-        });
-        // Combinamos las solicitudes HTTP para ejecutarlas
-        return syncObservables.length > 0 ? of(syncObservables) : of([]);
-      })
+            catchError(error => {
+              console.error(`Error al sincronizar pedido ${pedido.id}:`, error);
+              return of(null);  // Continúa con el siguiente pedido si hay error
+            })
+          )
+        );
+  
+        return forkJoin(syncObservables);  // Ejecuta todas las solicitudes de sincronización
+      }),
+      tap(() => console.log('Sincronización de pedidos completa')),
+      catchError(this.handleError<any>('syncPendingPedidos'))
     );
+  }
+  
+  private async notificarNuevoPedido(pedido: ClPedido) {
+    await LocalNotifications.schedule({
+      notifications: [
+        {
+          title: 'Nuevo Pedido',
+          body: `Pedido #${pedido.id} ha sido agregado.`,
+          id: Number(pedido.id),
+          schedule: { at: new Date(Date.now() + 1000) }, // Notificación inmediata
+          sound: 'default',
+        },
+      ],
+    });
   }
 }
