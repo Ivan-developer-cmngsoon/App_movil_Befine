@@ -69,6 +69,50 @@
       "horario_entrega": "17 hrs",
       "telefono": "956984125",
       "medio_pago": "tarjeta"
+    },
+    {
+      "id": 14,
+      "nombre_cliente": "hola",
+      "direccion": "ddd",
+      "detalle_pedido": "dd",
+      "total_a_pagar": 33,
+      "horario_entrega": "33",
+      "telefono": "333333333",
+      "medio_pago": "tarjeta",
+      "is_synced": 0
+    },
+    {
+      "id": 15,
+      "nombre_cliente": "carlos",
+      "direccion": "nj",
+      "detalle_pedido": "hjhjk",
+      "total_a_pagar": 78787878,
+      "horario_entrega": "nkjk",
+      "telefono": "123456789",
+      "medio_pago": "tarjeta",
+      "is_synced": 0
+    },
+    {
+      "id": 16,
+      "nombre_cliente": "sincard",
+      "direccion": "fldkjflk",
+      "detalle_pedido": "1234",
+      "total_a_pagar": 1234,
+      "horario_entrega": "1234",
+      "telefono": "123456789",
+      "medio_pago": "efectivo",
+      "is_synced": 0
+    },
+    {
+      "id": 17,
+      "nombre_cliente": "juan",
+      "direccion": "11",
+      "detalle_pedido": "11",
+      "total_a_pagar": 11,
+      "horario_entrega": "11",
+      "telefono": "111111111",
+      "medio_pago": "tarjeta",
+      "is_synced": 0
     }
   ],
   "usuario": [
