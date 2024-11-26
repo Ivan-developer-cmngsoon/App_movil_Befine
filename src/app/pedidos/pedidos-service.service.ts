@@ -7,7 +7,7 @@ import { SqliteService } from './../services/sqlite.service';
 import { LocalNotifications } from '@capacitor/local-notifications';
 
 
-const apiUrl = "http://192.168.1.88:3000/pedidos";  // API JSON Server en puerto 3000
+const apiUrl = "http://192.168.43.37:3000/pedidos";  // API JSON Server en puerto 3000
 const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
 
 @Injectable({

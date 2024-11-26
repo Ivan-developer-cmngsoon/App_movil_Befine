@@ -71,7 +71,7 @@
       "medio_pago": "tarjeta"
     },
     {
-      "id": 14,
+      "id": "14",
       "nombre_cliente": "hola",
       "direccion": "ddd",
       "detalle_pedido": "dd",
@@ -82,7 +82,7 @@
       "is_synced": 0
     },
     {
-      "id": 15,
+      "id": "15",
       "nombre_cliente": "carlos",
       "direccion": "nj",
       "detalle_pedido": "hjhjk",
@@ -93,7 +93,7 @@
       "is_synced": 0
     },
     {
-      "id": 16,
+      "id": "16",
       "nombre_cliente": "sincard",
       "direccion": "fldkjflk",
       "detalle_pedido": "1234",
@@ -104,13 +104,35 @@
       "is_synced": 0
     },
     {
-      "id": 17,
+      "id": "17",
       "nombre_cliente": "juan",
       "direccion": "11",
       "detalle_pedido": "11",
       "total_a_pagar": 11,
       "horario_entrega": "11",
       "telefono": "111111111",
+      "medio_pago": "tarjeta",
+      "is_synced": 0
+    },
+    {
+      "id": "1",
+      "nombre_cliente": "kaja",
+      "direccion": "kqjaj",
+      "detalle_pedido": "kajak",
+      "total_a_pagar": 6000679494994,
+      "horario_entrega": "8qiksje",
+      "telefono": "123456789",
+      "medio_pago": "tarjeta",
+      "is_synced": 0
+    },
+    {
+      "id": 2,
+      "nombre_cliente": "Jna",
+      "direccion": "jajq",
+      "detalle_pedido": "kajn",
+      "total_a_pagar": 646191,
+      "horario_entrega": "jskwj",
+      "telefono": "123456789",
       "medio_pago": "tarjeta",
       "is_synced": 0
     }
