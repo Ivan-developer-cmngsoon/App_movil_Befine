@@ -1,46 +1,16 @@
-.home-content {
-  --background: linear-gradient(180deg, #1c4b81, #68a4d9); /* Fondo degradado */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  color: white;
-}
-
-.welcome-container {
+#welcome-message {
   text-align: center;
-  margin-bottom: 20px;
+  margin-top: 50px;
+  color: #0041b3;
 }
 
-.welcome-title {
-  font-size: 28px;
-  font-weight: bold;
-  color: white;
-}
-
-.welcome-message {
-  font-size: 16px;
-  color: rgba(255, 255, 255, 0.8);
-  margin-top: 10px;
-}
-
-.action-container {
-  width: 100%;
-  max-width: 400px;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-ion-button {
-  --border-radius: 20px;
-  --background: white;
-  --color: #1c4b81;
+h2 {
+  font-size: 26px;
+  color: #0041b3;  /* Color azul de Befine */
   font-weight: bold;
 }
 
-ion-button[fill="outline"] {
-  --border-color: white;
-  --color: white;
+p {
+  font-size: 18px;
+  color: #333;
 }

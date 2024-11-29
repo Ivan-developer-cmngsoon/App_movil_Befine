@@ -1,20 +1,20 @@
 <ion-header>
-  <ion-toolbar color="primary">
+  <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+      <ion-menu-button></ion-menu-button> <!-- Botón para abrir el menú -->
     </ion-buttons>
     <ion-title>Home</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="home-content">
-  <!-- Mensaje de bienvenida -->
-  <div class="welcome-container">
-    <h2 class="welcome-title">¡Bienvenido, {{ username }}!</h2>
-    <p class="welcome-message">
-      Nos alegra que estés aquí. Accede a las funcionalidades de Befine fácilmente.
-    </p>
-  </div>
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar></ion-toolbar>
+  </ion-header>
 
-  
+  <!-- Contenedor para el mensaje de bienvenida con la referencia para la animación -->
+  <div id="welcome-message" #welcomeMessage>
+    <h2>¡Bienvenido, {{ username }}!</h2>
+    <p>Nos alegra que estés aquí. Accede a las funcionalidades de Befine fácilmente.</p>
+  </div>
 </ion-content>

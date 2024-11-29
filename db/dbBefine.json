@@ -126,7 +126,7 @@
       "is_synced": 0
     },
     {
-      "id": 2,
+      "id": "2",
       "nombre_cliente": "Jna",
       "direccion": "jajq",
       "detalle_pedido": "kajn",
@@ -134,6 +134,28 @@
       "horario_entrega": "jskwj",
       "telefono": "123456789",
       "medio_pago": "tarjeta",
+      "is_synced": 0
+    },
+    {
+      "id": 2,
+      "nombre_cliente": "aiis",
+      "direccion": "jajq",
+      "detalle_pedido": "jajsj",
+      "total_a_pagar": 949494,
+      "horario_entrega": "hahs",
+      "telefono": "123456789",
+      "medio_pago": "efectivo",
+      "is_synced": 0
+    },
+    {
+      "id": "31",
+      "nombre_cliente": "Cdjsk",
+      "direccion": "jkdjsk",
+      "detalle_pedido": "jkldsj",
+      "total_a_pagar": 10000000,
+      "horario_entrega": "4563",
+      "telefono": "123456789",
+      "medio_pago": "efectivo",
       "is_synced": 0
     }
   ],

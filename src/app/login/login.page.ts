@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-import { Storage } from '@ionic/storage-angular';
-import { ModalController } from '@ionic/angular';
+import { HttpClient } from '@angular/common/http';  // Importar HttpClient para manejar las peticiones HTTP
+import { Storage } from '@ionic/storage-angular';  // Importar Storage para manejar la sesión
+import { ModalController } from '@ionic/angular';  // Importar ModalController para manejar el modal
 
 @Component({
   selector: 'app-login',
@@ -10,83 +10,107 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  username: string = '';
-  password: string = '';
-  email: string = '';
-  errorMessage: string = '';
-  errorCorreo: string = '';
 
-  passwordType: string = 'password';
-  passwordIcon: string = 'eye-off';
+  username: string = '';  // Almacena el nombre de usuario ingresado
+  password: string = '';  // Almacena la contraseña ingresada
+  email: string = '';  // Almacena el correo electrónico para la recuperación de contraseña
+  errorMessage: string = '';  // Mensaje de error en caso de problemas con el login
+  errorCorreo: string = '';  // Mensaje de error si el correo para la recuperación es inválido
+
+  // Variables para manejar la visibilidad de la contraseña
+  passwordType: string = 'password';  // Tipo del input de contraseña (password o text)
+  passwordIcon: string = 'eye-off';   // Ícono para mostrar u ocultar la contraseña
 
   constructor(
     private router: Router,
-    private http: HttpClient,
-    private storage: Storage,
-    private modalController: ModalController
+    private http: HttpClient,  // Inyectar HttpClient
+    private storage: Storage,  // Inyectar Storage para manejar la sesión
+    private modalController: ModalController  // Inyectar ModalController
   ) {}
 
   async ngOnInit() {
+    // Inicializar el Storage para poder guardar los datos
     await this.storage.create();
   }
 
+  // Función que se ejecuta cuando el usuario hace clic en el botón de login
   login() {
-    if (!this.email || !this.username || !this.password) {
-      this.errorMessage = 'Por favor, complete todos los campos.';
-      return;
-    }
-    if (!this.email.includes('@')) {
-      this.errorMessage = 'Ingrese un correo electrónico válido.';
-      return;
-    }
+    if (this.email && this.username && this.password) {
+      // Realizar la solicitud HTTP a json-server para validar el correo, nombre de usuario y la contraseña
+      this.http.get<any[]>(`http://192.168.43.37:3000/usuario?email=${this.email}&username=${this.username}&password=${this.password}`)
+        .subscribe({
+          next: async (response) => {
+            if (response.length > 0) {
+              // Si las credenciales son correctas, guardar la sesión en el Storage
+              await this.storage.set('isAuthenticated', true);
+              await this.storage.set('username', this.username);
+              this.router.navigate(['/home']);
+              // Limpiar mensajes de error
+              this.errorMessage = '';
 
-    this.http
-      .get<any[]>(`http://192.168.43.37:3000/usuario?email=${this.email}&username=${this.username}&password=${this.password}`)
-      .subscribe({
-        next: async (response) => {
-          if (response.length > 0) {
-            await this.storage.set('user_authenticated', true);
-            await this.storage.set('user_name', this.username);
-            this.errorMessage = '';
-            const navigationExtras: NavigationExtras = { state: { username: this.username } };
-            this.router.navigate(['/home'], navigationExtras);
-          } else {
-            this.errorMessage = 'Correo, nombre de usuario o contraseña incorrectos.';
+              // Navegar a la página de inicio
+              let navigationExtras: NavigationExtras = {
+                state: { username: this.username }
+              };
+              this.router.navigate(['/home'], navigationExtras);
+            } else {
+              // Si las credenciales son incorrectas, mostrar un mensaje de error
+              this.errorMessage = 'Correo, nombre de usuario o contraseña incorrectos.';
+            }
+          },
+          error: () => {
+            // Si hay un error en la solicitud HTTP, mostrar un mensaje de error genérico
+            this.errorMessage = 'Error al conectar con el servidor. Inténtalo de nuevo.';
           }
-        },
-        error: () => {
-          this.errorMessage = 'No pudimos conectar con el servidor. Por favor, verifica tu conexión a internet.';
-        },
-      });
-  }
-
-  togglePasswordVisibility() {
-    this.passwordType = this.passwordType === 'password' ? 'text' : 'password';
-    this.passwordIcon = this.passwordIcon === 'eye-off' ? 'eye' : 'eye-off';
-  }
-
-  onSubmit() {
-    if (!this.email) {
-      this.errorCorreo = 'Por favor, ingrese un correo válido.';
-      return;
+        });
+    } else {
+      // Si los campos están vacíos, mostrar un mensaje de error
+      this.errorMessage = 'Por favor, ingrese todos los campos.';
     }
-
-    this.http.get<any[]>(`http://192.168.43.37:3000/usuario?email=${this.email}`).subscribe({
-      next: (response) => {
-        if (response.length > 0) {
-          alert('Instrucciones enviadas para recuperar tu contraseña.');
-          this.dismissModal();
-        } else {
-          this.errorCorreo = 'Este correo no está registrado.';
-        }
-      },
-      error: () => {
-        this.errorCorreo = 'No pudimos conectar con el servidor. Por favor, intenta más tarde.';
-      },
-    });
   }
 
+  // Función para manejar el envío del formulario de recuperación de contraseña
+  onSubmit() {
+    if (this.email) {
+      // Realizar una solicitud HTTP para verificar si el email existe en json-server
+      this.http.get<any[]>(`http://192.168.43.37:3000/usuario?email=${this.email}`)
+        .subscribe({
+          next: (response) => {
+            if (response.length > 0) {
+              // Si el correo está registrado, mostrar un mensaje y redirigir al login
+              alert('Instrucciones enviadas para recuperar tu contraseña.');
+              this.dismissModal();  // Cerrar el modal
+              this.router.navigate(['/login']);  // Redirigir al login
+            } else {
+              // Si el correo no está registrado, mostrar un mensaje de error
+              this.errorCorreo = 'Este correo no está registrado.';
+            }
+          },
+          error: () => {
+            // Si hay un error en la solicitud HTTP, mostrar un mensaje de error genérico
+            this.errorCorreo = 'Error al conectar con el servidor. Inténtalo de nuevo.';
+          }
+        });
+    } else {
+      // Si el campo de correo está vacío, mostrar un mensaje de error
+      this.errorCorreo = 'Por favor ingresa un correo válido.';
+    }
+  }
+
+  // Función para cerrar el modal de recuperación de contraseña
   async dismissModal() {
-    await this.modalController.dismiss();
+    await this.modalController.dismiss();  // Cerrar el modal correctamente
+    console.log('Modal cerrado');
+  }
+
+  // Función para alternar la visibilidad de la contraseña
+  togglePasswordVisibility() {
+    if (this.passwordType === 'password') {
+      this.passwordType = 'text';  // Cambiar a tipo texto para mostrar la contraseña
+      this.passwordIcon = 'eye';   // Cambiar el ícono a "mostrar"
+    } else {
+      this.passwordType = 'password';  // Cambiar a tipo password para ocultar la contraseña
+      this.passwordIcon = 'eye-off';   // Cambiar el ícono a "ocultar"
+    }
   }
 }
