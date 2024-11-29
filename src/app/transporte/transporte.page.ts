@@ -24,6 +24,12 @@ export class TransportePage implements OnInit {
     });
   }
 
+  // Método para ver detalles del pedido
+  verDetalles(pedido: any) {
+    console.log('Detalles del pedido:', pedido);
+    // Navegar a una nueva página de detalles si lo deseas
+  }
+
   // Configuración de notificaciones para nuevos pedidos
   async configurarNotificaciones() {
     const permiso = await LocalNotifications.requestPermissions();
@@ -49,4 +55,3 @@ export class TransportePage implements OnInit {
     });
   }
 }
-

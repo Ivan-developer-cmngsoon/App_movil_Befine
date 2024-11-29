@@ -1,52 +1,60 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { AnimationController } from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Storage } from '@ionic/storage-angular';  // Importar Storage para manejar la sesión
+import { Storage } from '@ionic/storage-angular';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements AfterViewInit {
   @ViewChild('welcomeMessage', { read: ElementRef, static: true }) welcomeMessage!: ElementRef;
-
-  username: string = ''; // Definir la propiedad username
+  username: string = 'Usuario'; // Valor por defecto
 
   constructor(
-    private animationCtrl: AnimationController, 
-    private router: Router, 
+    private animationCtrl: AnimationController,
+    private router: Router,
     private activeroute: ActivatedRoute,
-    private storage: Storage  // Inyectar Storage para manejar el username
+    private storage: Storage
   ) {}
 
   async ngOnInit() {
-    // Recuperar el nombre de usuario desde el Storage si no se pasa en la navegación
-    const savedUsername = await this.storage.get('username');
-    if (savedUsername) {
-      this.username = savedUsername;
-    } else {
-      this.activeroute.queryParams.subscribe(() => {
-        const currentNavigation = this.router.getCurrentNavigation();
-        if (currentNavigation && currentNavigation.extras.state) {
-          this.username = currentNavigation.extras.state['username'] || 'Usuario';
-        } else {
-          this.username = 'Usuario';  // Valor por defecto si no hay datos en la navegación
+    try {
+      // Recuperar el username desde el Storage
+      const savedUsername = await this.storage.get('username');
+      if (savedUsername) {
+        this.username = savedUsername;
+      } else {
+        // Si no está en el Storage, buscarlo en el estado de navegación
+        const navigation = this.router.getCurrentNavigation();
+        if (navigation && navigation.extras.state && navigation.extras.state['username']) {
+          this.username = navigation.extras.state['username'];
         }
-      });
+      }
+    } catch (error) {
+      console.error('Error recuperando el username:', error);
     }
-    console.log(this.username);  // Mostrar el username recibido o recuperado del Storage
+
+    console.log('Username:', this.username);
   }
 
   ngAfterViewInit() {
-    // Definir la animación para el mensaje de bienvenida
-    const welcomeAnimation = this.animationCtrl
-      .create()
-      .addElement(this.welcomeMessage.nativeElement)
-      .duration(1500) // Duración de la animación en milisegundos
-      .fromTo('transform', 'translateY(-100%)', 'translateY(0)')
-      .fromTo('opacity', '0', '1'); // Efecto de desvanecimiento (fade in)
+    // Animación para el mensaje de bienvenida
+    if (this.welcomeMessage) {
+      const welcomeAnimation = this.animationCtrl
+        .create()
+        .addElement(this.welcomeMessage.nativeElement)
+        .duration(1500)
+        .easing('ease-out')
+        .fromTo('transform', 'translateY(-50px)', 'translateY(0)')
+        .fromTo('opacity', '0', '1');
 
-    welcomeAnimation.play(); // Ejecutar la animación
+      welcomeAnimation.play().catch((err) =>
+        console.error('Error reproduciendo la animación:', err)
+      );
+    } else {
+      console.warn('Elemento de bienvenida no encontrado.');
+    }
   }
 }

@@ -1,0 +1,48 @@
+/* Estilo para la página de transporte */
+ion-header {
+    --background: #1c4b81; /* Fondo azul para la cabecera */
+  }
+  
+  ion-content {
+    --background: #f4f4f4; /* Fondo gris claro */
+  }
+  
+  /* Estilo de las tarjetas de pedido */
+  .pedido-card {
+    --background: white;
+    --border-radius: 10px;
+    --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 12px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  /* Estilo de los títulos de cada pedido */
+  .pedido-card h2 {
+    font-size: 16px;
+    font-weight: bold;
+    color: #1c4b81;
+  }
+  
+  /* Estilo del detalle del pedido */
+  .pedido-card p {
+    font-size: 14px;
+    color: #555;
+  }
+  
+  /* Resaltar el total a pagar */
+  .total-a-pagar {
+    font-size: 16px;
+    font-weight: bold;
+    color: #28a745; /* Verde para el total */
+    margin-top: 5px;
+  }
+  
+  /* Botón de actualizar lista */
+  ion-button {
+    --border-radius: 20px;
+    margin-top: 20px;
+  }
+  

@@ -1,62 +1,41 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Login</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content class="ion-padding">
-  <form>
-    <ion-item>
-      <ion-label position="floating">Correo electrónico</ion-label>
-      <ion-input type="text" [(ngModel)]="email" name="email"></ion-input> <!-- gmail para validacion -->
-    </ion-item>
-    
-    <ion-item>
-      <ion-label position="floating">Nombre de usuario</ion-label>
-      <ion-input type="text" [(ngModel)]="username" name="username"></ion-input> <!-- username -->
-    </ion-item>
-    
-    <!-- Campo de contraseña con opción para mostrar/ocultar -->
-    <ion-item>
-      <ion-label position="floating">Contraseña</ion-label>
-      <ion-input [type]="passwordType" [(ngModel)]="password" name="password"></ion-input>
-      <ion-button fill="clear" slot="end" (click)="togglePasswordVisibility()">
-        <ion-icon [name]="passwordIcon"></ion-icon>
-      </ion-button>
-    </ion-item>
-    
-    <div *ngIf="errorMessage" style="color: red;">{{ errorMessage }}</div>
-    <ion-button expand="block" (click)="login()">Ingresar</ion-button>
-  </form>
-
-  <!-- Botón para abrir el modal -->
-  <div style="text-align: center; margin-top: 20px;">
-    <ion-button id="open-modal" expand="block">Recuperar Contraseña</ion-button>
+<ion-content class="login-page">
+  <!-- Encabezado con título centrado -->
+  <div class="header">
+    <h1>BEFINE</h1>
   </div>
 
-  <!-- Modal de confirmación -->
-  <ion-modal trigger="open-modal" [canDismiss]="true">
-    <ng-template>
-      <ion-header>
-        <ion-toolbar>
-          <ion-title>Recuperación de contraseña</ion-title>
-        </ion-toolbar>
-      </ion-header>
+  <!-- Contenedor principal para el formulario -->
+  <div class="login-container">
+    <form>
+      <!-- Campo de correo electrónico -->
+      <ion-item class="custom-item" lines="none">
+        <ion-label position="floating">Correo electrónico</ion-label>
+        <ion-input type="text" [(ngModel)]="email" name="email"></ion-input>
+      </ion-item>
 
-      <ion-content class="ion-padding">
-        <form (ngSubmit)="onSubmit()" #form="ngForm">
-          <ion-item>
-            <ion-label position="floating">Correo electrónico</ion-label>
-            <ion-input type="email" [(ngModel)]="email" name="email" required email></ion-input>
-          </ion-item>
+      <!-- Campo de nombre de usuario -->
+      <ion-item class="custom-item" lines="none">
+        <ion-label position="floating">Nombre de usuario</ion-label>
+        <ion-input type="text" [(ngModel)]="username" name="username"></ion-input>
+      </ion-item>
 
-          <!-- Muestra un mensaje de error si el correo es inválido -->
-          <div *ngIf="errorCorreo" style="color: red;">{{ errorCorreo }}</div>
+      <!-- Campo de contraseña -->
+      <ion-item class="custom-item" lines="none">
+        <ion-label position="floating">Contraseña</ion-label>
+        <ion-input [type]="passwordType" [(ngModel)]="password" name="password"></ion-input>
+        <ion-button fill="clear" slot="end" (click)="togglePasswordVisibility()">
+          <ion-icon [name]="passwordIcon"></ion-icon>
+        </ion-button>
+      </ion-item>
 
-          <ion-button expand="block" type="submit" [disabled]="form.invalid">Enviar instrucciones</ion-button>
-          <ion-button expand="block" color="light" (click)="dismissModal()">Cancelar</ion-button>
-        </form>
-      </ion-content>
-    </ng-template>
-</ion-modal>
+      <!-- Mensaje de error -->
+      <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+
+      <!-- Botones de acción -->
+      <div class="button-container">
+        <ion-button expand="block" class="custom-btn" (click)="login()">Ingresar</ion-button>
+        <ion-button expand="block" fill="outline" class="custom-btn" id="open-modal">Recuperar Contraseña</ion-button>
+      </div>
+    </form>
+  </div>
 </ion-content>
