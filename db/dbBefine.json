@@ -8,7 +8,8 @@
       "total_a_pagar": 5000,
       "horario_entrega": "10:00 AM - 11:00 AM",
       "telefono": 987654321,
-      "medio_pago": "Transferencia"
+      "medio_pago": "Transferencia",
+      "estadoId": "1"
     },
     {
       "id": "210b",
@@ -48,7 +49,8 @@
       "total_a_pagar": 10000,
       "horario_entrega": "17 hrs",
       "telefono": "987456321",
-      "medio_pago": "tarjeta"
+      "medio_pago": "tarjeta",
+      "estadoId": "3"
     },
     {
       "id": "1728942347547ymna5rp",
@@ -126,7 +128,7 @@
       "is_synced": 0
     },
     {
-      "id": 2,
+      "id": "2",
       "nombre_cliente": "Jna",
       "direccion": "jajq",
       "detalle_pedido": "kajn",
@@ -167,6 +169,23 @@
       "email": "dueño@befine.com",
       "username": "Dueño",
       "password": "Befine2024"
+    }
+  ],
+  "estados": [
+    {
+      "id": "1",
+      "nombre": "Pendiente",
+      "color": "danger"
+    },
+    {
+      "id": "2",
+      "nombre": "En camino",
+      "color": "warning"
+    },
+    {
+      "id": "3",
+      "nombre": "Entregado",
+      "color": "success"
     }
   ]
 }

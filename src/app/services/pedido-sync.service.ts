@@ -7,7 +7,7 @@ import { SqliteService } from './sqlite.service';
   providedIn: 'root'
 })
 export class PedidoSyncService {
-  private apiUrl = 'http://192.168.43.37:3000/pedidos'; // URL de tu JSON server
+  private apiUrl = 'http://localhost:3000/pedidos'; // URL de tu JSON server
 
   constructor(private http: HttpClient, private sqliteService: SqliteService) {}
 

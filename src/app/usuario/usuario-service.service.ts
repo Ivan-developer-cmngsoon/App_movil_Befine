@@ -6,7 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { switchMap } from 'rxjs/operators';
 
 
-const apiUrl = "http://192.168.43.37:3000/usuario";  // URL de la API para usuarios
+const apiUrl = "http://localhost:3000/usuario";  // URL de la API para usuarios
 const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
 
 @Injectable({

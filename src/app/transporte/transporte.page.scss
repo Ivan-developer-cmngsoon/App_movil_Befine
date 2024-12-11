@@ -1,0 +1,85 @@
+/* Fondo general */
+ion-content {
+    --background: linear-gradient(to bottom, #f3f9ff, #e3f2fd);
+  }
+  
+  /* Contenedor del encabezado */
+  .header-container {
+    text-align: center;
+    padding: 20px;
+    background-color: #00796b;
+    color: white;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .header-container h2 {
+    font-size: 1.8rem;
+    margin: 0;
+  }
+  
+  .header-container p {
+    font-size: 1rem;
+    margin: 5px 0 0;
+  }
+  
+  /* Diseño de las tarjetas */
+  .pedido-card {
+    margin: 15px 10px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    background: #ffffff;
+  }
+  
+  ion-card-header {
+    background-color: #e0f7fa;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    padding: 15px;
+  }
+  
+  ion-card-title {
+    font-size: 1.4rem;
+    color: #00796b;
+  }
+  
+  /* Estado con colores dinámicos */
+  .estado-badge {
+    display: inline-block;
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border-radius: 20px;
+    color: white;
+    margin: 10px 0;
+  }
+  
+  .estado-1 {
+    background-color: #d9534f; /* Rojo: Pendiente */
+  }
+  
+  .estado-2 {
+    background-color: #f0ad4e; /* Amarillo: En camino */
+  }
+  
+  .estado-3 {
+    background-color: #5cb85c; /* Verde: Entregado */
+  }
+  
+  /* Selector de estado */
+  .estado-selector ion-label {
+    font-size: 0.9rem;
+    color: #00796b;
+  }
+  
+  /* Contenedor del botón */
+  .button-container {
+    text-align: center;
+    margin: 20px;
+  }
+  
+  ion-button {
+    width: 90%;
+    --box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+  }
+  

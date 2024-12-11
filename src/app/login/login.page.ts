@@ -37,7 +37,7 @@ export class LoginPage implements OnInit {
   login() {
     if (this.email && this.username && this.password) {
       // Realizar la solicitud HTTP a json-server para validar el correo, nombre de usuario y la contraseña
-      this.http.get<any[]>(`http://192.168.43.37:3000/usuario?email=${this.email}&username=${this.username}&password=${this.password}`)
+      this.http.get<any[]>(`http://localhost:3000/usuario?email=${this.email}&username=${this.username}&password=${this.password}`)
         .subscribe({
           next: async (response) => {
             if (response.length > 0) {
@@ -73,7 +73,7 @@ export class LoginPage implements OnInit {
   onSubmit() {
     if (this.email) {
       // Realizar una solicitud HTTP para verificar si el email existe en json-server
-      this.http.get<any[]>(`http://192.168.43.37:3000/usuario?email=${this.email}`)
+      this.http.get<any[]>(`http://localhost:3000/usuario?email=${this.email}`)
         .subscribe({
           next: (response) => {
             if (response.length > 0) {

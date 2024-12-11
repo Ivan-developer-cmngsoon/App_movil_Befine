@@ -5,9 +5,10 @@ import { catchError, tap, switchMap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { SqliteService } from './../services/sqlite.service';
 import { LocalNotifications } from '@capacitor/local-notifications';
+import { Estado } from './model/estado.model';
 
 
-const apiUrl = "http://192.168.43.37:3000/pedidos";  // API JSON Server en puerto 3000
+const apiUrl = "http://localhost:3000/pedidos";  // API JSON Server en puerto 3000
 const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
 
 @Injectable({
@@ -133,4 +134,37 @@ export class PedidoServiceService {
       ],
     });
   }
+  // Obtener todos los estados desde el servidor JSON-server
+/**
+ * Método para obtener todos los estados disponibles desde JSON-server.
+ * Los estados incluyen información como el ID, nombre y color del estado.
+ * 
+ * @returns {Observable<Estado[]>} - Un observable que emite una lista de objetos Estado.
+ */
+getEstados(): Observable<Estado[]> {
+  const estadosApiUrl = "http://localhost:3000/estados"; // URL de la API para los estados
+
+  console.log("Obteniendo estados desde JSON-server...");
+  return this.http.get<Estado[]>(estadosApiUrl)
+    .pipe(
+      tap(estados => console.log('Estados obtenidos desde JSON-server:', estados)),
+      catchError(this.handleError<Estado[]>('getEstados', []))
+    );
+}
+// Actualizar el estado de un pedido en el servidor JSON-server
+/**
+ * Método para actualizar el estado de un pedido.
+ * 
+ * @param pedidoId {number} - El ID del pedido que se va a actualizar.
+ * @param estadoId {number} - El ID del nuevo estado a asignar.
+ * @returns {Observable<any>} - Un observable que emite el resultado de la actualización.
+ */
+updateEstadoPedido(pedidoId: number, estadoId: number): Observable<any> {
+  const url = `${apiUrl}/${pedidoId}`; // URL del pedido
+  return this.http.patch(url, { estadoId }, httpOptions).pipe(
+    tap(() => console.log(`Estado del pedido ${pedidoId} actualizado a estadoId ${estadoId}`)),
+    catchError(this.handleError<any>('updateEstadoPedido'))
+  );
+}
+
 }
