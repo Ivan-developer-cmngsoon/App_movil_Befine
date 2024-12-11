@@ -35,3 +35,14 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
+
+/* Fondo común con degradado azul para todas las páginas */
+ion-content {
+    --background: linear-gradient(to bottom, #eff2f6, #2b6bb7); /* Degradado azul */
+  }
+  
+  /* Opcional: si prefieres un color sólido de fondo cuando no hay imagen */
+  body {
+    background-color: #1C4B81; /* Color de fondo azul sólido */
+  }
+  
