@@ -9,7 +9,7 @@
       "horario_entrega": "10:00 AM - 11:00 AM",
       "telefono": 987654321,
       "medio_pago": "Transferencia",
-      "estadoId": "1"
+      "estadoId": "2"
     },
     {
       "id": "210b",
@@ -139,7 +139,7 @@
       "is_synced": 0
     },
     {
-      "id": 2,
+      "id": "2",
       "nombre_cliente": "aiis",
       "direccion": "jajq",
       "detalle_pedido": "jajsj",
