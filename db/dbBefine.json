@@ -9,7 +9,7 @@
       "horario_entrega": "10:00 AM - 11:00 AM",
       "telefono": 987654321,
       "medio_pago": "Transferencia",
-      "estadoId": "2"
+      "estadoId": "3"
     },
     {
       "id": "210b",
@@ -19,7 +19,8 @@
       "total_a_pagar": 20000,
       "horario_entrega": "09 a 12 hrs",
       "telefono": "+56985214785",
-      "medio_pago": "Efectivo"
+      "medio_pago": "Efectivo",
+      "estadoId": "2"
     },
     {
       "id": "0003",
@@ -29,7 +30,8 @@
       "total_a_pagar": 10000,
       "horario_entrega": "13 hrs",
       "telefono": "958584747",
-      "medio_pago": "efectivo"
+      "medio_pago": "efectivo",
+      "estadoId": "1"
     },
     {
       "id": "3728942347547ymna5rp",

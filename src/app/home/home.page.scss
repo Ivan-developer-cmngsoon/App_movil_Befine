@@ -1,16 +1,29 @@
-#welcome-message {
-  text-align: center;
-  margin-top: 50px;
-  color: #0041b3;
+
+/* Estilo general del contenido */
+ion-content {
+  --background: linear-gradient(to bottom, #007bff, #e9f7fe); /* Fondo degradado */
+  color: #333; /* Color de texto */
+  font-family: 'Roboto', sans-serif;
 }
 
-h2 {
-  font-size: 26px;
-  color: #0041b3;  /* Color azul de Befine */
+/* Mensaje de bienvenida */
+#welcome-message {
+  text-align: center;
+  margin-top: 30px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.8); /* Fondo blanco translúcido */
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#welcome-message h2 {
+  color: #007bff;
+  font-size: 1.8rem;
   font-weight: bold;
 }
 
-p {
-  font-size: 18px;
-  color: #333;
+#welcome-message p {
+  color: #555;
+  font-size: 1rem;
+  margin-top: 10px;
 }

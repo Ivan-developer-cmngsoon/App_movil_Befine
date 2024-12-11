@@ -8,7 +8,7 @@ import { LocalNotifications } from '@capacitor/local-notifications';
 import { Estado } from './model/estado.model';
 
 
-const apiUrl = "http://localhost:3000/pedidos";  // API JSON Server en puerto 3000
+const apiUrl = "http://192.168.43.37:3000/pedidos";  // API JSON Server en puerto 3000
 const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
 
 @Injectable({
@@ -142,7 +142,7 @@ export class PedidoServiceService {
  * @returns {Observable<Estado[]>} - Un observable que emite una lista de objetos Estado.
  */
 getEstados(): Observable<Estado[]> {
-  const estadosApiUrl = "http://localhost:3000/estados"; // URL de la API para los estados
+  const estadosApiUrl = "http://192.168.43.37:3000/estados"; // URL de la API para los estados
 
   console.log("Obteniendo estados desde JSON-server...");
   return this.http.get<Estado[]>(estadosApiUrl)

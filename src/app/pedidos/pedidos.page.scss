@@ -1,0 +1,42 @@
+/* Fondo general del contenido */
+
+  
+  /* Cabecera (Header) */
+  
+  
+  ion-toolbar {
+    --background: transparent;
+    box-shadow: 0 4px 8px rgb(2, 86, 255); /* Sombra suave para el toolbar */
+  }
+  
+  ion-title {
+    color: rgb(255, 255, 255); /* Color del texto del título */
+    text-align: center; /* Centrar el texto del título */
+  }
+  
+  /* Botones principales */
+  ion-button {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    padding: 15px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    --background: #007bff; /* Fondo azul */
+    --color: white; /* Color del texto */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra para los botones */
+    transition: transform 0.9s, box-shadow 0.9s; /* Transición para hover */
+  }
+  
+  /* Efecto hover en botones */
+  ion-button:hover {
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); /* Aumenta la sombra */
+  }
+  
+  /* Estilo de ion-menu-button */
+  ion-menu-button {
+    --color: rgb(255, 255, 255); /* Color del botón del menú */
+    font-size: 1.2rem;
+  }
+  

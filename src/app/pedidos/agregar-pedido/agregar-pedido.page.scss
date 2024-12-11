@@ -2,4 +2,124 @@
     color: red;
     margin-left: 16px;
   }
+  /* Fondo general */
+
+
+/* Cabecera (Header) */
+ion-header {
+  --background: #007bff; /* Azul vibrante */
+  --color: white; /* Texto blanco */
+}
+
+ion-toolbar {
+  box-shadow: 0 4px 8px rgb(0, 132, 255); /* Sombra para darle profundidad */
+}
+
+ion-title {
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Formulario */
+form {
+  background: rgba(255, 255, 255, 0.315); /* Fondo blanco translúcido */
+  padding: 20px;
+  border-radius: 15px; /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para resaltar el formulario */
+}
+
+/* Campos del formulario */
+ion-item {
   
+  margin-top: 10px;
+  border-radius: 8px;
+  --background: #0242a189; /* Fondo gris claro */
+  --inner-border-color: transparent; /* Eliminar bordes internos */
+}
+
+ion-label {
+  font-size: 1rem;
+  color: #007bff; /* Azul vibrante */
+  font-weight: bold;
+}
+
+ion-input {
+  color: black;
+  font-size: 1rem;
+  padding: 10px;
+}
+
+/* Mensajes de error */
+.error-message {
+  margin-top: 5px;
+  color: red;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+/* Botón de envío */
+ion-button {
+  --background: #007bff; /* Fondo azul */
+  --color: rgb(255, 255, 255); /* Texto blanco */
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Sombra para resaltar */
+  transition: transform 0.2s, box-shadow 0.2s; /* Animaciones al pasar el cursor */
+  margin-top: 20px;
+}
+
+/* Efectos hover en botón */
+ion-button:hover {
+  transform: scale(1.05); /* Aumenta ligeramente el tamaño */
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.4); /* Aumenta la sombra */
+}
+
+/* Modal de confirmación */
+ion-modal {
+  --background: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+}
+
+ion-modal ion-header {
+  --background: #007bff;
+  --color: white;
+  text-align: center;
+}
+
+ion-modal ion-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+ion-modal h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+ion-modal ion-button {
+  margin-top: 10px;
+  --background: #28a745; /* Fondo verde para éxito */
+  --color: white;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+/* Diseño responsivo */
+@media screen and (max-width: 600px) {
+  form {
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  ion-label {
+    font-size: 0.9rem;
+  }
+
+  ion-button {
+    font-size: 1rem;
+  }
+}

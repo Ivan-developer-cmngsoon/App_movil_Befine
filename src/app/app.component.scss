@@ -1,0 +1,64 @@
+/* Fondo general del menú */
+/* Fondo del menú */
+ion-menu {
+    
+    --width: 280px; /* Ancho del menú */
+  }
+  
+  /* Fondo del contenido dentro del menú */
+  ion-content {
+    --background: transparent; /* Elimina cualquier fondo oscuro */
+  }
+  
+  /* Fondo blanco para los elementos del menú */
+  ion-list {
+    background: transparent; /* Fondo transparente para la lista */
+  }
+  
+  ion-item {
+    --background: #5a88de; /* Fondo blanco para los elementos */
+    border-radius: 8px;
+    margin: 8px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  }
+  
+  /* Encabezado del menú */
+  ion-header {
+    --background: #007bff; /* Fondo azul vibrante */
+    --color: white; /* Texto blanco */
+  }
+  
+  /* Hover en los elementos */
+  ion-item:hover {
+    --background: #0f5c94b9; /* Fondo azul claro al pasar el cursor */
+  }
+  
+  
+  
+  
+  /* Botón de logout */
+  ion-item:last-child {
+    --background: #ffcccc; /* Fondo rojo claro */
+    color: #dc3545; /* Texto rojo */
+  }
+  
+  ion-item:last-child:hover {
+    --background: #dc3545; /* Fondo rojo oscuro */
+    color: white; /* Texto blanco */
+  }
+  
+  /* Responsivo */
+  @media screen and (max-width: 600px) {
+    ion-menu {
+      --width: 240px; /* Menú más estrecho en pantallas pequeñas */
+    }
+  
+    ion-item {
+      font-size: 1rem;
+    }
+  
+    ion-icon {
+      font-size: 1.2rem;
+    }
+  }
+  

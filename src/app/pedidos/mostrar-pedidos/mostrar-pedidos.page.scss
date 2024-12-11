@@ -1,13 +1,72 @@
-.error-message {
-    color: red;
-    text-align: center;
-  }
-  
-.pedido-card {
-    margin-bottom: 15px;
-  }
+/* Fondo general */
 
-.no-pedidos-message {
-    text-align: center;
-    color: gray;
-  }
+
+/* Lista de pedidos */
+ion-list {
+  margin-top: 10px;
+  background: transparent; /* Aseguramos que no tenga fondo */
+}
+
+/* Estilo de las tarjetas */
+.pedido-card {
+  margin-bottom: 15px;
+  border-radius: 12px;
+  background: #ffffff; /* Fondo blanco */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  border: none; /* Eliminar cualquier borde negro */
+}
+
+/* Fondo del ion-card */
+ion-card {
+  --background: transparent; /* Aseguramos que el fondo sea transparente */
+  box-shadow: none; /* Eliminar cualquier sombra adicional */
+  border: none; /* Eliminar cualquier borde */
+}
+
+/* Encabezado del pedido */
+ion-card-header {
+  background: #007bff; /* Fondo azul vibrante */
+  color: white; /* Texto blanco */
+  padding: 15px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: none; /* Eliminar cualquier borde */
+}
+
+/* Contenido del pedido */
+ion-card-content {
+  padding: 15px;
+  font-size: 1rem;
+  color: #333; /* Texto oscuro */
+  background: #ffffff; /* Fondo blanco */
+  border: none; /* Eliminar cualquier borde */
+}
+
+ion-card-content p {
+  margin: 8px 0;
+  line-height: 1.5;
+}
+
+/* Botones de acción */
+ion-button {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  border-radius: 8px;
+  --box-shadow: none; /* Asegura que no haya sombras extras */
+  --background: white;
+}
+
+/* Botón Modificar */
+ion-button[color="primary"] {
+  --background: #007bff;
+  --color: white;
+  --border-color: #007bff;
+}
+
+/* Botón Eliminar */
+ion-button[color="danger"] {
+  --background: #dc3545;
+  --color: white;
+  --border-color: #dc3545;
+}
